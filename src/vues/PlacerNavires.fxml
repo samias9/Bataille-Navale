@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ProgressBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChoisirNavires">
+   <children>
+      <Separator layoutX="447.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="501.0" prefWidth="8.0" />
+      <Button fx:id="choisirnavire1" layoutX="391.0" layoutY="97.0" mnemonicParsing="false" onAction="#setNavireChoisi" style="-fx-background-radius: 10;" text="Choisir" />
+      <Label layoutX="15.0" layoutY="105.0" text="SOUSMARIN:" />
+      <Label layoutX="197.0" layoutY="84.0" text="Ligne" />
+      <Label layoutX="289.0" layoutY="85.0" text="Colonne" />
+      <MenuButton fx:id="LSousMarin" layoutX="179.0" layoutY="101.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" text="Ligne">
+        <items>
+          <MenuItem mnemonicParsing="false" text="1" />
+          <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+        </items>
+      </MenuButton>
+      <MenuButton fx:id="CSousMarin" layoutX="268.0" layoutY="101.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" text="Colonne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <Button fx:id="choisirnavire2" layoutX="391.0" layoutY="149.0" mnemonicParsing="false" onAction="#setNavireChoisi" style="-fx-background-radius: 10;" text="Choisir" />
+      <Label layoutX="15.0" layoutY="157.0" text="FREGATE:" />
+      <Label layoutX="198.0" layoutY="136.0" text="Ligne" />
+      <MenuButton fx:id="LFregate" layoutX="179.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" text="Ligne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <Button fx:id="choisirnavire3" layoutX="391.0" layoutY="201.0" mnemonicParsing="false" onAction="#setNavireChoisi" style="-fx-background-radius: 10;" text="Choisir" />
+      <Label layoutX="15.0" layoutY="209.0" prefHeight="18.0" prefWidth="146.0" text="CONTRETORPILLEUR:" />
+      <Label layoutX="197.0" layoutY="188.0" text="Ligne" />
+      <MenuButton fx:id="LCTorpilleur" layoutX="179.0" layoutY="205.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" text="Ligne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <Label layoutX="15.0" layoutY="261.0" prefHeight="18.0" prefWidth="146.0" text="PORTEAVION:" />
+      <Label layoutX="15.0" layoutY="313.0" prefHeight="18.0" prefWidth="146.0" text="CUIRASSE:" />
+      <Label layoutX="15.0" layoutY="365.0" prefHeight="18.0" prefWidth="146.0" text="CROISEUR:" />
+      <MenuButton fx:id="LPorteAvion" layoutX="179.0" layoutY="257.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" text="Ligne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="LCuirasse" layoutX="179.0" layoutY="309.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" text="Ligne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="LCroiseur" layoutX="179.0" layoutY="361.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" text="Ligne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <Label layoutX="197.0" layoutY="240.0" text="Ligne" />
+      <Label layoutX="197.0" layoutY="292.0" text="Ligne" />
+      <Label layoutX="197.0" layoutY="344.0" text="Ligne" />
+      <Label layoutX="291.0" layoutY="136.0" text="Colonne" />
+      <MenuButton fx:id="CFregate" layoutX="272.0" layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Colonne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <Label layoutX="290.0" layoutY="188.0" text="Colonne" />
+      <MenuButton fx:id="CCTorpilleur" layoutX="272.0" layoutY="205.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Colonne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="CPorteAvion" layoutX="272.0" layoutY="257.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Colonne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="CCuirasse" layoutX="272.0" layoutY="309.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Colonne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="CCroiseur" layoutX="272.0" layoutY="361.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="Colonne">
+         <items>
+            <MenuItem mnemonicParsing="false" text="1" />
+            <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="3" />
+            <MenuItem mnemonicParsing="false" text="4" />
+            <MenuItem mnemonicParsing="false" text="5" />
+            <MenuItem mnemonicParsing="false" text="6" />
+            <MenuItem mnemonicParsing="false" text="7" />
+            <MenuItem mnemonicParsing="false" text="8" />
+            <MenuItem mnemonicParsing="false" text="9" />
+            <MenuItem mnemonicParsing="false" text="10" />
+         </items>
+      </MenuButton>
+      <Label layoutX="290.0" layoutY="240.0" text="Colonne" />
+      <Label layoutX="290.0" layoutY="292.0" text="Colonne" />
+      <Label layoutX="290.0" layoutY="344.0" text="Colonne" />
+      <Button fx:id="choisirnavire4" layoutX="391.0" layoutY="253.0" mnemonicParsing="false" onAction="#setNavireChoisi" style="-fx-background-radius: 10;" text="Choisir" />
+      <Button fx:id="choisirnavire5" layoutX="391.0" layoutY="305.0" mnemonicParsing="false" onAction="#setNavireChoisi" style="-fx-background-radius: 10;" text="Choisir" />
+      <Button fx:id="choisirnavire6" layoutX="391.0" layoutY="357.0" mnemonicParsing="false" onAction="#setNavireChoisi" style="-fx-background-radius: 10;" text="Choisir" />
+      <Button fx:id="buttonPrevious" alignment="CENTER" layoutX="16.0" layoutY="18.0" mnemonicParsing="false" onAction="#ShowAcceuilConnexion" prefHeight="34.0" prefWidth="103.0" style="-fx-background-color: FAB020; -fx-background-radius: 20;" text="Previous" textAlignment="CENTER" textFill="#69502b" wrapText="true">
+         <font>
+            <Font name="Corbel Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCombattre" alignment="CENTER" layoutX="177.0" layoutY="421.0" mnemonicParsing="false" onAction="#saveNavires" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: FAB020; -fx-background-radius: 20;" text="Comabattre" textAlignment="CENTER" textFill="#69502b" wrapText="true">
+         <font>
+            <Font name="Corbel Bold" size="14.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="552.5" layoutY="32.5" />
+      <GridPane fx:id="gridPane" gridLinesVisible="true" layoutX="496.0" layoutY="85.0">
+        <columnConstraints>
+          <ColumnConstraints fx:id="columnConstraints1" hgrow="SOMETIMES" maxWidth="95.6434326171875" minWidth="0.0" percentWidth="0.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.58489990234375" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.25897216796875" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Rectangle fx:id="cell82" id="cell_8_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell22" id="cell_2_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell21" id="cell_2_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell41" id="cell_4_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell81" id="cell_8_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell72" id="cell_7_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell31" id="cell_3_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell32" id="cell_3_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell12" id="cell_1_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" />
+            <Rectangle fx:id="cell71" id="cell_7_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell62" id="cell_6_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell61" id="cell_6_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell53" id="cell_5_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell51" id="cell_5_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell42" id="cell_4_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell24" id="cell_2_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell91" id="cell_9_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell92" id="cell_9_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cellf1" id="cell_10_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cellf2" id="cell_10_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell13" id="cell_1_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" />
+            <Rectangle fx:id="cell23" id="cell_2_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell33" id="cell_3_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell43" id="cell_4_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell63" id="cell_6_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell73" id="cell_7_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cellf3" id="cell_10_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell93" id="cell_9_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell83" id="cell_8_3" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell14" id="cell_1_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" />
+            <Rectangle fx:id="cell44" id="cell_4_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell34" id="cell_3_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell64" id="cell_6_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell74" id="cell_7_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell84" id="cell_8_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell94" id="cell_9_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cellf4" id="cell_10_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell45" id="cell_4_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell15" id="cell_1_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" />
+            <Rectangle fx:id="cell28" id="cell_2_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell48" id="cell_4_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell38" id="cell_3_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell86" id="cell_8_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell76" id="cell_7_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cellf5" id="cell_10_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell95" id="cell_9_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell85" id="cell_8_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell75" id="cell_7_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell65" id="cell_6_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell55" id="cell_5_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell16" id="cell_1_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" />
+            <Rectangle fx:id="cell66" id="cell_6_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell56" id="cell_5_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell46" id="cell_4_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell36" id="cell_3_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell26" id="cell_2_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cellf6" id="cell_10_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell96" id="cell_9_6" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell52" id="cell_5_2" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cellf7" id="cell_10_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell97" id="cell_9_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell87" id="cell_8_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell77" id="cell_7_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell67" id="cell_6_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell57" id="cell_5_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell47" id="cell_4_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell37" id="cell_3_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell27" id="cell_2_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell17" id="cell_1_7" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="6" />
+            <Rectangle fx:id="cell18" id="cell_1_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" />
+            <Rectangle fx:id="cell25" id="cell_2_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell35" id="cell_3_5" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cellf8" id="cell_10_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell98" id="cell_9_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell88" id="cell_8_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell78" id="cell_7_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell68" id="cell_6_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell58" id="cell_5_8" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cellf9" id="cell_10_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell99" id="cell_9_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell89" id="cell_8_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell79" id="cell_7_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell69" id="cell_6_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell59" id="cell_5_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell49" id="cell_4_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell39" id="cell_3_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell29" id="cell_2_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell19" id="cell_1_9" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="8" />
+            <Rectangle fx:id="cellff" id="cell_10_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+            <Rectangle fx:id="cell9f" id="cell_9_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="8" />
+            <Rectangle fx:id="cell8f" id="cell_8_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+            <Rectangle fx:id="cell7f" id="cell_7_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+            <Rectangle fx:id="cell6f" id="cell_6_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+            <Rectangle fx:id="cell5f" id="cell_5_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell4f" id="cell_4_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+            <Rectangle fx:id="cell3f" id="cell_3_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+            <Rectangle fx:id="cell2f" id="cell_2_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+            <Rectangle fx:id="cell1f" id="cell_1_10" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="9" />
+            <Rectangle fx:id="cell54" id="cell_5_4" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Rectangle fx:id="cell11" id="cell_1_1" arcHeight="5.0" arcWidth="5.0" fill="#c5dff8" height="32.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+         </children>
+      </GridPane>
+      <ProgressBar fx:id="progressShip" layoutX="671.0" layoutY="437.0" prefHeight="34.0" prefWidth="200.0" progress="0.0" style="-fx-background-color: FAB020; -fx-background-radius: 30;" />
+      <ImageView fx:id="imgPolytech" fitHeight="80.0" fitWidth="56.0" layoutX="20.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@popo-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

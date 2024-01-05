@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AcceuilConnexionController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="294.0" prefWidth="470.0">
+
+         <children>
+            <Label layoutX="91.0" layoutY="76.0" text="Pseudo :" />
+            <TextField fx:id="pseudoTextField" layoutX="149.0" layoutY="72.0" onAction="#rejoindrePartieClicked" prefHeight="26.0" prefWidth="164.0" promptText="Veuillez saisir votre pseudo">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Button layoutX="115.0" layoutY="149.0" mnemonicParsing="false" onAction="#rejoindrePartieClicked" text="Rejoindre" />
+            <Button layoutX="225.0" layoutY="149.0" mnemonicParsing="false" onAction="#hebergerPartieClicked" text="Héberger" />
+            <Text layoutX="111.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quelle action souhaitez vous faire ?" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
