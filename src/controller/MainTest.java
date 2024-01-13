@@ -17,7 +17,7 @@ public class MainTest extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Load the main FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/PlacerNavires.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/AcceuilConnexion.fxml"));
         Parent root = loader.load();
         // Show the main window
         Scene scene = new Scene(root);

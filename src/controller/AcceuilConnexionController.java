@@ -1,7 +1,10 @@
 package controller;
 
+import ClientNavale.ClientNavale;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -18,32 +21,47 @@ import java.io.IOException;
 
 public class AcceuilConnexionController {
 
+    static Partie partie;
+
     @FXML
     private TextField pseudoTextField;
-
     @FXML
     private Button rejoindrePartieButton;
 
     @FXML
     private Button hebergerPartieButton;
-
     @FXML
     private void initialize() {
         // Vous pouvez initialiser des choses ici si nécessaire
     }
 
     @FXML
-    public void rejoindrePartieClicked() {
+    public void rejoindrePartieClicked(ActionEvent event) throws IOException {
         String pseudo = pseudoTextField.getText();
         if (!pseudo.isEmpty()) {
             // Créez un nouveau joueur avec le pseudo
             Joueur joueur = new Joueur(pseudo);
 
-            //Afficher le pseudo du joueur et ouvrir la fenêtre pour rejoindre une partie
+            // Associer le joueur à la partie
+            partie.setJoueurRejoindre(joueur);
+            joueur.setStatus("R");
+            partie.numPartie();
+
+            // Afficher le pseudo du joueur et ouvrir la fenêtre pour rejoindre une partie
             System.out.println("Joueur créé avec le pseudo : " + joueur.getPseudo());
-            loadWindow("../RejoindreWindow.fxml","Rejoindre une partie");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/RejoindreWindow.fxml"));
+            Parent root = loader.load();
+
+            RejoindreWindowController rejoindreController = loader.getController();
+            rejoindreController.setPartie(partie);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
         } else {
-            //Si le pseudo est vide message d'erreur à afficher
+            // Si le pseudo est vide, affichez un message d'erreur
             showAlert("Veuillez entrer un pseudonyme correct, s'il vous plaît.");
         }
     }
@@ -66,27 +84,63 @@ public class AcceuilConnexionController {
             e.printStackTrace(); // Gérez les erreurs de chargement de la fenêtre
         }
     }
-
     /**
      * Action quand le bouton Héberger est cliqué
      */
     @FXML
-    void hebergerPartieClicked() {
+    void hebergerPartieClicked(ActionEvent event) throws IOException {
         String pseudo = pseudoTextField.getText();
         if (!pseudo.isEmpty()) {
             // Créez un nouveau joueur avec le pseudo
             Joueur joueur = new Joueur(pseudo);
 
-            //Afficher le pseudo du joueur et ouvrir la fenêtre pour rejoindre une partie
+            // Créez une nouvelle partie et associez le joueur à la partie
+            partie = new Partie();
+
+            partie.setJoueurHeberger(joueur);
+            joueur.setStatus("H");
+            partie.numPartie();
+
+            // Afficher le pseudo du joueur et ouvrir la fenêtre pour héberger une partie
             System.out.println("Joueur créé avec le pseudo : " + joueur.getPseudo());
-            loadWindow("../HebergerWindow.fxml","Hberger la partie");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/HebergerWindow.fxml"));
+            Parent root = loader.load();
+
+            // Accédez au contrôleur de la fenêtre HebergerWindow
+            HebergerWindowController hebergerController = loader.getController();
+
+            // Passez la partie à HebergerWindowController
+            hebergerController.setPartie(partie);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.show();
         } else {
-            //Si le pseudo est vide message d'erreur à afficher
+            // Si le pseudo est vide, affichez un message d'erreur
             showAlert("Veuillez entrer un pseudonyme correct, s'il vous plaît.");
         }
-
     }
 
+    @FXML
+    void showAboutPage(ActionEvent event) {
+        // Load the FXML file for the About page
+        loadWindow("/vues/AboutPage.fxml", "About");
+
+        // You can add additional code here if needed
+    }
+    @FXML
+    void ShowAcceuilConnexion(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/AcceuilConnexion.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
     /**
      * Message d'erreur à afficher
      * @param message
@@ -98,5 +152,4 @@ public class AcceuilConnexionController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
 }

@@ -15,16 +15,52 @@ public class Joueur {
 	 * @brief Pseudo du joueur.
 	 */
 	private String pseudo;
+	private String IP;
+	private int NPort;
 	/**
 	 * @brief Score du joueur
 	 */
 	private int score;
+	private boolean connected;
+	private String status;
+
+	public boolean isConnected() {
+		return connected;
+	}
+	public String getStatus(){
+		return status;
+	}
+	public void setStatus(String status){
+		this.status = status;
+	} //H==Hebergeur && R==Rejoindre
+
+	public void setConnected() {
+		this.connected = true;
+	}
+
 	/**
 	 * @brief Tableau de navires du joueur.
 	 */
 	//private Navire[] navires; //A changer
 	private ArrayList<Navire> navires;
 	private ArrayList<Coordonnee> tirsRates; //les tirs qu'il a recus mais qui ont touches aucun navire
+
+	public void setIP(String IP) {
+		this.IP = IP;
+	}
+
+	public void setNPort(int NPort) {
+		this.NPort = NPort;
+	}
+
+	public String getIP() {
+		return IP;
+	}
+
+	public int getNPort() {
+		return NPort;
+	}
+
 	/**
 	 * @brief Constructeur par défaut de la classe Joueur.
 	 */
@@ -110,20 +146,27 @@ public class Joueur {
 	public void estAttaque(Coordonnee coordonnee) {
 		// Vérifier si la coordonnée est contenue dans l'un des navires du joueur
 		// Si elle a déjà été touchée, ne rien faire. Sinon, la marquer comme touchée.
-		for (int i=0; i<navires.size();i++) 
+		if(navires!=null)
 		{
-			if (navires.get(i).contient(coordonnee))
+			for (int i=0; i<navires.size();i++)
 			{
-				if (navires.get(i).inPartiesTouchees(coordonnee))
+				if (navires.get(i).contient(coordonnee))
 				{
-					break;
-				}
-				else 
-				{
-					navires.get(i).estTouchee(coordonnee);
+					if (navires.get(i).inPartiesTouchees(coordonnee))
+					{
+						break;
+					}
+					else
+					{
+						navires.get(i).estTouchee(coordonnee);
+					}
 				}
 			}
 		}
+		else {
+			System.err.println("Navires non initialisés");
+		}
+
 		tirsRates.add(coordonnee);
 		System.out.println("tirer");
 		

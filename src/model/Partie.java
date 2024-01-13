@@ -3,6 +3,7 @@ package model;
 import java.util.*;
 
 public class Partie {
+	private static int i;
 	private static ArrayList<typeNavires> typeNaviresJ1;
     private static ArrayList<typeNavires> typeNaviresJ2;
     static ArrayList<typeNavires> naviresChoisisJ1;
@@ -11,14 +12,20 @@ public class Partie {
     static ArrayList<Navire> navires2;
     //static ArrayList<Coordonnee> tirsJ1;
     //static ArrayList<Coordonnee> tirsJ2;
-    static Joueur joueur1;
-    static Joueur joueur2;
+    static Joueur joueurHeberger;
+    static Joueur joueurRejoindre;
+	public Partie(){
+		i++;
+	}
     //Scanner sc, Joueur joueur1, Joueur joueur2,
     //ArrayList<Navire> naviresJ1, ArrayList<Navire> naviresJ2
-    
+
+	public static void numPartie(){
+		System.out.println("Je suis la partie en cours numéro: "+i);
+	}
     public static Scanner in;
-    
-    public static final String msg0 = "veuillez placer les 6 navires";
+	public boolean otherPlayerJoined;
+	public static final String msg0 = "veuillez placer les 6 navires";
     public static final String msgCoord = "Entrez la coordonnée de début (ligne colonne):";
     public static final String msgDirection = "Le navire est vertical? (true/false):";
     public static final String msgChoisirNavire = "\n" +
@@ -29,13 +36,27 @@ public class Partie {
 			"            4  PORTEAVION\n" +
 			"            5. CUIRASSE\n" +
 			"            6. CROISEUR";
-    
+
+	public static void setJoueurHeberger(Joueur joueur) {
+		joueurHeberger = joueur;
+	}
+
+	public static void setJoueurRejoindre(Joueur joueur) {
+		joueurRejoindre = joueur;
+	}
+
+	public static Joueur getJoueurHeberger() {
+		return joueurHeberger;
+	}
+	public static Joueur getJoueurRejoindre() {
+		return joueurRejoindre;
+	}
 	private static void placerNavires() 
 	{
 	
 	    for (int j = 0; j < 2; j++) 
 	    {
-	        Joueur joueur = (j == 0) ? joueur1 : joueur2;
+	        Joueur joueur = (j == 0) ? joueurHeberger : joueurRejoindre;
 	        ArrayList<typeNavires> typeNaviresC = (j == 0) ? typeNaviresJ1 : typeNaviresJ2;
 	
 	        System.out.println(joueur.getPseudo() + ", " + msg0);
@@ -76,8 +97,6 @@ public class Partie {
 	        }
 	    }
 	}
-	
-	
 	private static void afficherGrille(Joueur joueur) {
         System.out.println("Grille de " + joueur.getPseudo() + ":");
 
@@ -152,10 +171,6 @@ public class Partie {
         
 
     }
-
-
-
-	
 	public static boolean estGagnant(Joueur joueur, ArrayList<Navire> naviresAdversaire) {
 	    // Vérifier si tous les navires de l'adversaire ont été coulés
 	    for (Navire navire : naviresAdversaire) {
@@ -166,9 +181,7 @@ public class Partie {
 	    // Tous les navires de l'adversaire ont été coulés, le joueur est gagnant
 	    return true;
 	}
-
-
-private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coordonnee coordTir) {
+	private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coordonnee coordTir) {
 		for (Navire navire : joueurAdversaire.getNavires()) {
             if (navire.contient(coordTir)) {
                 if (joueur.inTirsRates(coordTir)) {
@@ -182,9 +195,6 @@ private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coord
         
         return '.';
 	}
-
-
-	
 	private static boolean typeValide(typeNavires shipType, Set<typeNavires> chosenShipTypes) 
 	{
 	    return chosenShipTypes.add(shipType);
@@ -237,9 +247,6 @@ private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coord
 	    }
 	    System.out.println();
 	}
-
-
-
 	public void joueurEffectueTir(Joueur joueurActuel, Joueur joueurAdversaire) {
 		System.out.println(joueurActuel.getPseudo() + ", c'est à vous de tirer!");
 		System.out.println("Entrez la coordonnée de tir (ligne colonne): ");
@@ -263,26 +270,26 @@ private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coord
 	
 	    // Entrée des pseudos pour les joueurs
 	    System.out.println("Joueur1: Entrer votre Pseudo");
-	    joueur1 = new Joueur(in.nextLine());
+	    joueurHeberger = new Joueur(in.nextLine());
 	    
 	    System.out.println("Joueur2: Entrer votre Pseudo");
-	    joueur2 = new Joueur(in.nextLine());
+	    joueurRejoindre = new Joueur(in.nextLine());
 	
 	    // Assigner les tableaux de navires à chaque joueur
-	    joueur1.setNavires(navires1);
-	    joueur2.setNavires(navires2);
+	    joueurHeberger.setNavires(navires1);
+	    joueurRejoindre.setNavires(navires2);
 	
 	    //Placer les navires
 	    placerNavires();
 		
-	    informerPlacement(joueur1);
-	    informerPlacement(joueur2);
+	    informerPlacement(joueurHeberger);
+	    informerPlacement(joueurRejoindre);
 	    
 	    //Debut jeu
 	    System.out.println("Debut du jeu!");
 	    
 	    boolean partieEnCours = true;
-	    Joueur joueurActuel = joueur1;
+	    Joueur joueurActuel = joueurHeberger;
 
 	    while (partieEnCours) {
 	    	afficherGrille(joueurActuel);
@@ -292,29 +299,27 @@ private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coord
             int colonneTir = in.nextInt();
 
             Coordonnee coordTir = new Coordonnee(ligneTir, colonneTir);
-            joueurActuel.tirer(joueurActuel == joueur1 ? joueur2 : joueur1, coordTir);
+            joueurActuel.tirer(joueurActuel == joueurHeberger ? joueurRejoindre : joueurHeberger, coordTir);
            
             
-            if (joueurActuel == joueur1) {
-            	afficherGrilleTirs( joueur2);
+            if (joueurActuel == joueurHeberger) {
+            	afficherGrilleTirs(joueurRejoindre);
             } else {
-            	afficherGrilleTirs( joueur1);
+            	afficherGrilleTirs(joueurHeberger);
             }
-            if (estGagnant(joueur1, navires1)) {
-                System.out.println(joueur1.getPseudo() + " a gagné!");
+            if (estGagnant(joueurHeberger, navires1)) {
+                System.out.println(joueurHeberger.getPseudo() + " a gagné!");
                 partieEnCours = false;
-            } else if (estGagnant(joueur2, navires2)) {
-                System.out.println(joueur2.getPseudo() + " a gagné!");
+            } else if (estGagnant(joueurRejoindre, navires2)) {
+                System.out.println(joueurRejoindre.getPseudo() + " a gagné!");
                 partieEnCours = false;
             }
 
-            joueurActuel = joueurActuel == joueur1 ? joueur2 : joueur1;
+            joueurActuel = joueurActuel == joueurHeberger ? joueurRejoindre : joueurHeberger;
         }
 
         in.close();
 		
 	}
-    
-
 }
 

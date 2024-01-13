@@ -5,5 +5,7 @@ module com.example.bataillenavalevf {
 
     opens controller to javafx.fxml;
     exports controller;
+    exports ClientNavale;
 
 }
+
