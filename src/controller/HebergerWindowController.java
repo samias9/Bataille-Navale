@@ -39,6 +39,7 @@ public class HebergerWindowController {
         this.joueurHeberger = partie.getJoueurHeberger();
 
     }
+
     public void assignIP(){
         String ipAddress = ipField.getText();
         joueurHeberger.setIP(ipAddress);
@@ -54,14 +55,11 @@ public class HebergerWindowController {
         assignIP();
         assignNumPort();
         joueurHeberger.setConnected();
-        Joueur joueurRejoindre = partie.getJoueurRejoindre();
-        try {
-            ServerSocket serverSocket = new ServerSocket(numPort);
-            Socket clientSocket = serverSocket.accept();
-            // Gérez la connexion avec le joueur qui rejoint
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Serveur serveur = new Serveur();
+        serveur.demarrerServeur(numPort);
+        //Joueur joueurRejoindre = partie.getJoueurRejoindre();
+        Joueur joueurRejoindre = serveur.attendreJoueur();
+
         if (joueurRejoindre != null && joueurRejoindre.isConnected()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/PlacerNavires.fxml"));
             Parent root = loader.load();

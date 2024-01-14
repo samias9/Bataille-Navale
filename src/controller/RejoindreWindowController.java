@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Joueur;
 import model.Partie;
+import model.Robot;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -79,13 +80,11 @@ public class RejoindreWindowController {
             System.out.println("verifyIP() and verifyNumPort() are true.");
 
             joueurRejoindre.setConnected();
-            try {
-                Socket socket = new Socket(ipAddress, numPort);
-                // Gérez la connexion avec l'hôte
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (verifyIP() && verifyNumPort()) {
+            // Créez un client et connectez-vous au serveur
+            Client client = new Client();
+            boolean connectionReussie = client.connectToServer(ipAddress, numPort);
+            //if (verifyIP() && verifyNumPort()) {
+            if (connectionReussie) {
                 System.out.println("Joueur heberger is connected.");
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ChoisirNaviresVf.fxml"));
@@ -103,7 +102,7 @@ public class RejoindreWindowController {
                 System.out.println("Veuillez patienter que l'autre joueur rejoigne.");
                 showAlert("Veuillez patienter que l'autre joueur rejoigne.");
             }
-            } else {
+        } else {
             System.out.println("Connexion à l'IP " + ipField.getText() + " via le port " + numPortField.getText());
             System.out.println("Veuillez patienter que l'autre joueur rejoigne.");
             showAlert("Veuillez patienter que l'autre joueur rejoigne.");
@@ -139,5 +138,26 @@ public class RejoindreWindowController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    @FXML
+    public void rejoindrePartieAvecRobot(ActionEvent event) throws IOException {
+        joueurRejoindre.setConnected();
+        partie.setAvecRobot(true);
+        Robot robot = new Robot();
+        partie.setJoueurRobot(robot);
+
+        System.out.println(joueurRejoindre.getPseudo()+" vous êtes connecté(e). ");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ChoisirNaviresVf.fxml"));
+        Parent root = loader.load();
+
+        ChoisirNavires chosirNaviresController = loader.getController();
+        chosirNaviresController.setPartie(partie, joueurRejoindre);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
     }
 }

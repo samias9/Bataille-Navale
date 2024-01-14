@@ -6,27 +6,9 @@ package model;
  * Représente les coordonnées d'un point dans la grille.
  */
 public class Coordonnee {
-	/**
-	 * Ligne de la coordonnée.
-	 */
-	private int Ligne; //min
-	/**
-	 * Colonne de la coordonnée.
-	 */
+	private int Ligne;
 	private int Colonne;
-	
-	private String process = "x";
 
-	public String getProcess() {
-		return process+ "\t";
-	}
-	
-	public void setProcess() {
-		process = "y";
-	}
-	public String changeProcess() {
-		return "y\t";
-	}
 	/**
 	 * Constructeur par défaut, initialise la coordonnée à (0, 0).
 	 */
@@ -54,27 +36,11 @@ public class Coordonnee {
 	}
 
 	/**
-	 * Définit la ligne de la coordonnée.
-	 * @param ligne La nouvelle ligne de la coordonnée.
-	 */
-	public void setLigne(int ligne) {
-		Ligne = ligne;
-	}
-
-	/**
 	 * Obtient la colonne de la coordonnée.
 	 * @return La colonne de la coordonnée.
 	 */
 	public int getColonne() {
 		return Colonne;
-	}
-
-	/**
-	 * Définit la colonne de la coordonnée.
-	 * @param colonne La nouvelle colonne de la coordonnée.
-	 */
-	public void setColonne(int colonne) {
-		Colonne = colonne;
 	}
 
 	/**

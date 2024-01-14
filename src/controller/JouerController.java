@@ -25,6 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Malheureusement, cette classe n'a jamais été utilisée car nous n'avons pas réussi la partie réseau de ce projet.
+ */
 public class JouerController {
     private Partie partie;
     private Joueur joueurAdversaire;
@@ -49,6 +52,7 @@ public class JouerController {
         this.partie = partie;
 
         this.joueurActuel = joueur;
+
         if(joueurActuel.getStatus() == "H"){
             this.joueurAdversaire = partie.getJoueurRejoindre();
         }
@@ -86,7 +90,6 @@ public class JouerController {
             System.out.println("Vous avez tiré");
 
             if (partieEnCours) {
-
                 if (joueurActuel != null && joueurAdversaire != null) {
                     int ligneTir = Integer.parseInt(ligneAttaque.getText());
                     int colonneTir = Integer.parseInt(colonneAttaque.getText());
@@ -108,7 +111,7 @@ public class JouerController {
                         if (correspondingCell != null && correspondingCell.toString()==coordTir.toString()){
                             changeRectangleColor(correspondingCell, Color.RED);
                             System.out.println(xy);
-                        }//!joueurAdversaire.inTirsRates(coordTir)
+                        }
                     }
                     else
                     {
@@ -142,9 +145,6 @@ public class JouerController {
             }
         }
     }
-    void changeImageViewImage(ImageView imageView, Image newImage) {
-        imageView.setImage(newImage);
-    }
 
     private Rectangle findCorrespondingCell(GridPane gridPane, int columnIndex, int rowIndex) {
         String cellId = "cell_" + rowIndex + "_" + columnIndex;
@@ -167,9 +167,11 @@ public class JouerController {
         System.out.println("Corresponding cell not found: " + cellId);
         return null; // Corresponding cell not found
     }
+
     void changeRectangleColor(Rectangle rectangle, Color newColor) {
         rectangle.setFill(newColor);
     }
+
     private void addMenuItemHandler(MenuButton menuButton) {
         ObservableList<MenuItem> items = menuButton.getItems();
 
@@ -182,6 +184,7 @@ public class JouerController {
         // Update the text of the menuButton itself
         menuButton.setText(text);
     }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

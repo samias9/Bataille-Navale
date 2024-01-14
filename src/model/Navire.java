@@ -26,33 +26,10 @@ public class Navire {
 
 	/**
 	 * Constructeur avec paramètres de la classe navire.
-	 * @param cDebut Coordonnée de début du navire.
+	 * @param coordonnees tableau des coordonnée du navire.
 	 * @param shipType Le type du navire.
-	 * @param estV True si le navire est vertical, false sinon.
+	 * @param estVertical True si le navire est vertical, false sinon.
 	 */
-	public Navire(Coordonnee cDebut, typeNavires shipType, boolean estV){
-		this.cDebut = cDebut;
-		this.shipType = shipType;
-		
-		int longueur = shipType.getLongueur();
-		
-		if (estV) {
-
-			cFin = new Coordonnee(this.cDebut.getColonne(), this.cDebut.getLigne() + longueur - 1);
-
-        } else {
-
-        	cFin = new Coordonnee(this.cDebut.getColonne() + longueur - 1, this.cDebut.getLigne());
-
-        }
-
-        partiesTouchees = new Coordonnee[longueur];
-        for (int i = 0; i < longueur; i++) {
-            partiesTouchees[i] = null; // Initialise toutes les parties comme non touchées
-        }
-        nbTouchees = 0;
-	}
-	
 	public Navire(ArrayList<Coordonnee> coordonnees, typeNavires shipType, boolean estVertical) {
 	    if (coordonnees == null || coordonnees.isEmpty()) {
 	        throw new IllegalArgumentException("La liste des coordonnées ne peut pas être nulle ou vide.");
@@ -77,7 +54,6 @@ public class Navire {
 	    }
 	}
 
-
 	/**
 	 * Obtient la coordonnée de début du navire.
 	 * @return La coordonnée de début du navire.
@@ -86,16 +62,12 @@ public class Navire {
 		return cDebut;
 	}
 
+	/**
+	 * Obtient la coordonnée de fin du navire.
+	 * @return la coordonnée de fin du navire.
+	 */
 	public Coordonnee getcFin() {
 		return cFin;
-	}
-
-	/**
-	 * Obtient le tableau des coordonnées touchées du navire.
-	 * @return Le tableau des coordonnées touchées du navire.
-	 */
-	public Coordonnee[] getPartiesTouchees() {
-		return partiesTouchees;
 	}
 
 	/**
@@ -144,7 +116,6 @@ public class Navire {
 	    
 	}
 
-
 	/**
 	 * Vérifie si la coordonnée est contenue dans le navire.
 	 * @param coordonnee La coordonnée à vérifier.
@@ -165,8 +136,6 @@ public class Navire {
 	 * @return 
 	 */
 	public void estTouchee(Coordonnee coordonnee) {
-		
-		
 		if (!inPartiesTouchees(coordonnee)) {
 			if (this.contient(coordonnee)) {
 				this.partiesTouchees[nbTouchees] = coordonnee;
@@ -178,12 +147,33 @@ public class Navire {
 	}
 
 	/**
+	 * Vérifie si le navire chevauche un autre navire.
+	 * @return True si le navire est coulé, sinon false.
+	 */
+	public boolean chevauche(Navire n) {
+
+		if (this.cDebut.getLigne() == this.cFin.getLigne()) {
+			return n.cDebut.getColonne() >= this.cDebut.getColonne()
+					&& n.cDebut.getColonne() <= this.cFin.getColonne()
+					&& this.cDebut.getLigne() >= n.cDebut.getLigne()
+					&& this.cDebut.getLigne() <= n.cFin.getLigne();
+		} else {
+			return n.cDebut.getLigne() >= this.cDebut.getLigne()
+					&& n.cDebut.getLigne() <= this.cFin.getLigne()
+					&& this.cDebut.getColonne() <= n.cDebut.getColonne()
+					&& this.cDebut.getColonne() <= n.cFin.getColonne();
+		}
+
+	}
+
+	/**
 	 * Vérifie si le navire est coulé.
 	 * @return True si le navire est coulé, sinon false.
 	 */
 	public boolean estCoule() {
 		return nbTouchees == this.partiesTouchees.length;
 	}
+
 	@Override
 	public String toString(){
 

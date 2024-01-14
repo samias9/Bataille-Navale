@@ -3,28 +3,32 @@ package model;
 import java.util.*;
 
 public class Partie {
-	private static int i;
+	private static int i; //Pour compter le nombre de partie commencée
 	private static ArrayList<typeNavires> typeNaviresJ1;
     private static ArrayList<typeNavires> typeNaviresJ2;
-    static ArrayList<typeNavires> naviresChoisisJ1;
-    static ArrayList<typeNavires> naviresChoisisJ2;
-    static ArrayList<Navire> navires1;
-    static ArrayList<Navire> navires2;
-    //static ArrayList<Coordonnee> tirsJ1;
-    //static ArrayList<Coordonnee> tirsJ2;
-    static Joueur joueurHeberger;
-    static Joueur joueurRejoindre;
+	private static ArrayList<typeNavires> naviresChoisisJ1;
+	private static ArrayList<typeNavires> naviresChoisisJ2;
+	private static ArrayList<Navire> navires1;
+	private static ArrayList<Navire> navires2;
+	private static Joueur joueurHeberger;
+	private static Robot joueurRobot;
+	private static Joueur joueurRejoindre;
+	private static boolean avecRobot;
+
 	public Partie(){
 		i++;
 	}
-    //Scanner sc, Joueur joueur1, Joueur joueur2,
-    //ArrayList<Navire> naviresJ1, ArrayList<Navire> naviresJ2
+	public void setAvecRobot(boolean avecRobot){
+		this.avecRobot = avecRobot;
+	}
+
+	public boolean getAvecRobot(){ return avecRobot;}
 
 	public static void numPartie(){
 		System.out.println("Je suis la partie en cours numéro: "+i);
 	}
+
     public static Scanner in;
-	public boolean otherPlayerJoined;
 	public static final String msg0 = "veuillez placer les 6 navires";
     public static final String msgCoord = "Entrez la coordonnée de début (ligne colonne):";
     public static final String msgDirection = "Le navire est vertical? (true/false):";
@@ -44,15 +48,16 @@ public class Partie {
 	public static void setJoueurRejoindre(Joueur joueur) {
 		joueurRejoindre = joueur;
 	}
-
+	public static void setJoueurRobot(Robot robot) {
+		joueurRobot = robot;
+	}
 	public static Joueur getJoueurHeberger() {
 		return joueurHeberger;
 	}
 	public static Joueur getJoueurRejoindre() {
 		return joueurRejoindre;
 	}
-	private static void placerNavires() 
-	{
+	private static void placerNavires() {
 	
 	    for (int j = 0; j < 2; j++) 
 	    {
@@ -69,7 +74,7 @@ public class Partie {
 	            System.out.println(msgCoord);
 	            int ligneDebut = in.nextInt();
 	            int colonneDebut = in.nextInt();
-	            System.out.println("Coordonnées saisies : " + (ligneDebut + 1) + " " + (colonneDebut + 1)); 
+	            System.out.println("Coordonnées saisies : " + (ligneDebut ) + " " + (colonneDebut ));
 	
 	            // Entrée des dimensions du navire
 	            System.out.println(msgChoisirNavire);
@@ -97,6 +102,7 @@ public class Partie {
 	        }
 	    }
 	}
+
 	private static void afficherGrille(Joueur joueur) {
         System.out.println("Grille de " + joueur.getPseudo() + ":");
 
@@ -119,13 +125,7 @@ public class Partie {
         }
     }
 	
-	private static boolean typeValide(typeNavires shipType, ArrayList<typeNavires>  chosenShipTypes) 
-	{
-	    return chosenShipTypes.add(shipType);
-	}
-	
-	private static char obtenirMarque(Joueur joueur, Coordonnee coord) 
-	{
+	private static char obtenirMarque(Joueur joueur, Coordonnee coord) {
 	    // Vérifier si la coordonnée correspond à un navire du joueur
 	    for (Navire navire : joueur.getNavires()) 
 	    {
@@ -146,31 +146,7 @@ public class Partie {
 	    // Aucun navire trouvé, la case est vide
 	    return '.';
 	}
-	
-	private static void afficherGrilleAvecTir(Joueur joueur, Joueur joueurAdversaire, Coordonnee coordTir) {
-        
-		System.out.println("Grille de " + joueurAdversaire.getPseudo() + " apres que : "+ joueur.getPseudo() + "a tire" );
-		
-        System.out.print("   ");
-        for (char c = 'A'; c <= 'J'; c++) {
-            System.out.print(c + " ");
-        }
 
-        System.out.println();
-        for (int i = 0; i < 10; i++) {
-            System.out.print((i + 1) + " |");
-
-            for (int j = 0; j < 10; j++) {
-                Coordonnee coord = new Coordonnee(i + 1, j + 1);
-                char marque = marquerAvecTir(joueur,joueurAdversaire,coord);
-                System.out.print(" " + marque);
-            }
-
-            System.out.println();
-        }
-        
-
-    }
 	public static boolean estGagnant(Joueur joueur, ArrayList<Navire> naviresAdversaire) {
 	    // Vérifier si tous les navires de l'adversaire ont été coulés
 	    for (Navire navire : naviresAdversaire) {
@@ -181,27 +157,8 @@ public class Partie {
 	    // Tous les navires de l'adversaire ont été coulés, le joueur est gagnant
 	    return true;
 	}
-	private static char marquerAvecTir(Joueur joueur, Joueur joueurAdversaire, Coordonnee coordTir) {
-		for (Navire navire : joueurAdversaire.getNavires()) {
-            if (navire.contient(coordTir)) {
-                if (joueur.inTirsRates(coordTir)) {
-                    return 'L';  // Retourne une chaîne plutôt qu'un caractère
-                }
-                if (navire.inPartiesTouchees(coordTir))
-                    return 'X';  // Retourne une chaîne plutôt qu'un caractère
-                }
-                //return ".";
-            }
-        
-        return '.';
-	}
-	private static boolean typeValide(typeNavires shipType, Set<typeNavires> chosenShipTypes) 
-	{
-	    return chosenShipTypes.add(shipType);
-	}
 	
-	public static void informerPlacement(Joueur j) 
-	{
+	public static void informerPlacement(Joueur j) {
 		
 		System.out.println("Joueur " + j.getPseudo() + " a placé ses bateaux :");
 	    
@@ -247,17 +204,11 @@ public class Partie {
 	    }
 	    System.out.println();
 	}
-	public void joueurEffectueTir(Joueur joueurActuel, Joueur joueurAdversaire) {
-		System.out.println(joueurActuel.getPseudo() + ", c'est à vous de tirer!");
-		System.out.println("Entrez la coordonnée de tir (ligne colonne): ");
-		int ligneTir = in.nextInt();
-		int colonneTir = in.nextInt();
-		Coordonnee coordTir = new Coordonnee(ligneTir, colonneTir);
 
-		joueurActuel.effectuerTir(joueurAdversaire, coordTir);
-	}
-	public static void run() 
-	{
+	/**
+	 * Pour jouer en mode console, veuillez exécuter MAINconsole.
+	 */
+	public static void run() {
 		in = new Scanner(System.in);
 		// Sets pour suivre les types de navires choisis pour chaque joueurs
 	    naviresChoisisJ1 = new ArrayList<>();
@@ -299,9 +250,8 @@ public class Partie {
             int colonneTir = in.nextInt();
 
             Coordonnee coordTir = new Coordonnee(ligneTir, colonneTir);
-            joueurActuel.tirer(joueurActuel == joueurHeberger ? joueurRejoindre : joueurHeberger, coordTir);
-           
-            
+			joueurActuel.effectuerTir(joueurActuel == joueurHeberger ? joueurRejoindre : joueurHeberger, coordTir);
+
             if (joueurActuel == joueurHeberger) {
             	afficherGrilleTirs(joueurRejoindre);
             } else {

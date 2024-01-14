@@ -1,12 +1,12 @@
 package model;
 
 public enum typeNavires {
-	SOUSMARIN(1),
-	FREGATE(2),
-    CONTRETORPILLEUR(3),
-    PORTEAVION(5),
-    CUIRASSE(6),
-    CROISEUR(4);
+	SOUSMARIN(1),//ok
+	FREGATE(2),//ok
+    CONTRETORPILLEUR(3),//ok
+    PORTEAVION(5),//ok
+    CUIRASSE(6), //ok
+    CROISEUR(4);//
 
     private final int longueur;
 
